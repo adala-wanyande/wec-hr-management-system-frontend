@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 
 //Dummmy prop
 
-const ViewEmployeeDependentDetailsSubPage = ({dependentDetails, isFirstPage, isLastPage}) => {
+const ViewEmployeeDependentDetailsSubPage = ({dependentDetails, isFirstPage, isLastPage, hasMultiplePages, handleNextPageClick, handlePreviousPageClick}) => {
   let renderNavigation
   if (isFirstPage) {
      renderNavigation = (
       <div className='grid grid-cols-6 gap-1 pt-4 px-8'>
         <div className="col-start-5 col-span-1">
-          <NavigationButton buttonText="Next Dependent" linkUrl="#"></NavigationButton>
+          <NavigationButton buttonText="Next Dependent" handleClick={handleNextPageClick}></NavigationButton>
         </div>
       </div>
     )
@@ -21,7 +21,7 @@ const ViewEmployeeDependentDetailsSubPage = ({dependentDetails, isFirstPage, isL
      renderNavigation = (
       <div className='grid grid-cols-6 gap-1 pt-4 px-8'>
         <div className="col-start-2 col-span-1">
-          <NavigationButton buttonText="Previous Dependent" linkUrl="#"></NavigationButton>
+          <NavigationButton buttonText="Previous Dependent" handleClick={handlePreviousPageClick}></NavigationButton>
         </div>
       </div>
     )
@@ -31,14 +31,20 @@ const ViewEmployeeDependentDetailsSubPage = ({dependentDetails, isFirstPage, isL
      renderNavigation = (
       <div className='grid grid-cols-6 gap-1 pt-4 px-8'>
         <div className="col-start-2 col-span-1">
-          <NavigationButton buttonText="Previous Dependent" linkUrl="#"></NavigationButton>
+          <NavigationButton buttonText="Previous Dependent" handleClick={handlePreviousPageClick}></NavigationButton>
         </div>
         <div className="col-start-5 col-span-1">
-          <NavigationButton buttonText="Next Dependent" linkUrl="#"></NavigationButton>
+          <NavigationButton buttonText="Next Dependent" handleClick={handleNextPageClick}></NavigationButton>
         </div>
       </div>
     )
   }
+
+  if (!hasMultiplePages) {
+    renderNavigation = ("")
+  }
+
+
   return (
     <div className="mx-4 p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 

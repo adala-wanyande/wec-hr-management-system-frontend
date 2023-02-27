@@ -11,12 +11,12 @@ const ViewEmployeeBioDataPage = () => {
   let [pageNumber, setPageNumber] = useState(1)
 
   const handleNextPageClick = () => {
-      setPageNumber(pageNumber++)
+      setPageNumber((pageNumber) => {return pageNumber + 1})
   }
 
   const handlePreviousPageClick = () => {
-      setPageNumber(pageNumber--)
-    } 
+    setPageNumber((pageNumber) => {return pageNumber - 1})
+  } 
   
   switch (pageNumber) {
     case 1:

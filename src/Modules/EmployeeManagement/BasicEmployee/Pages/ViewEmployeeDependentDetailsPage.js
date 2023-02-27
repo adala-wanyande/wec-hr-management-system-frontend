@@ -1,9 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import NavigationBar from '../Components/NavigationBar'
 import ViewEmployeeDependentDetailsSubPage from '../SubPages/ViewEmployeeDependentDetailsSubPage'
-
-//Dependent state should be an array of objects with dependents in each object.
-//Each object will be passed to the subpage component as a prop using the map method
 
 let dependentDetails = [
   {
@@ -30,35 +27,40 @@ let dependentDetails = [
 ]
 
 const ViewEmployeeDependentDetailsPage = ({dependents = dependentDetails}) => {
-  const [pageCount, setPageCount] = useState()
-  const [currentPageNumber, setCurrentPageNumber] = useState(0)
-  const [maxPageNumber, setMaxPageNumber] = useState()
-  const [isFirstPage, setIsFirstPage] = useState(true) //If true render only next page button
-  const [isLastPage, setIsLastPage] = useState(false) //If true render only previous page button
-  //Incorporate logic for middle pages using the two states directly above
 
-  // First, Render first dependent's details using subpage component only
-  
-
-  useEffect(() => {
-    setCurrentPageNumber(0)
+  const [pageDetails, setPageDetails] = useState({
+    pageCount: "",
+    hasMultiplePages: false,
+    currentPageNumber: 1,
+    isFirstPage: true,
+    isLastPage: false
   })
 
-  const handlePageNextClick = () => { 
-    setCurrentPageNumber((currentPageNumber) => {
-      currentPageNumber++
-    })
+
+  useEffect(() => {
+    if (dependents.length > 1) {
+      setPageDetails({...pageDetails, pageCount: dependents.length + 1, hasMultiplePages: true})
+    }
+  }, [])
+
+  const handleNextPageClick = () => { 
+    if (pageDetails.currentPageNumber === dependents.length - 1) {
+      setPageDetails({...pageDetails, isLastPage: true, currentPageNumber: pageDetails.currentPageNumber + 1})
+    }
+    else setPageDetails({...pageDetails, isFirstPage: false, currentPageNumber: pageDetails.currentPageNumber + 1})
   }
 
   const handlePreviousPageClick = () => {
-    setCurrentPageNumber((currentPageNumber) => {
-      currentPageNumber++
-    })
+    if (pageDetails.currentPageNumber === 2) {
+      setPageDetails({...pageDetails, isFirstPage: true, currentPageNumber: pageDetails.currentPageNumber - 1})
+    }
+    else setPageDetails({...pageDetails, isLastPage: false, currentPageNumber: pageDetails.currentPageNumber - 1})
   }
+
   return (
     <>
       <NavigationBar></NavigationBar>
-      <ViewEmployeeDependentDetailsSubPage dependentDetails={dependents[currentPageNumber]} isFirstPage={isFirstPage} isLastPage={isLastPage}></ViewEmployeeDependentDetailsSubPage>
+      <ViewEmployeeDependentDetailsSubPage hasMultiplePages={pageDetails.hasMultiplePages} dependentDetails={dependents[pageDetails.currentPageNumber - 1]} isFirstPage={pageDetails.isFirstPage} isLastPage={pageDetails.isLastPage} handleNextPageClick={handleNextPageClick} handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeDependentDetailsSubPage>
     </>
   )
 }

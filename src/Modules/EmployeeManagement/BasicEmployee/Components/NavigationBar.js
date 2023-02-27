@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import WecLogo from '../../../../Components/WecLogo.jpg';
-import ProfilePhoto from '../../../../Components/ProfilePhoto.png'
+import WecLogo from '../../../../Images/WecLogo.jpg';
+import ProfilePhoto from '../../../../Images/ProfilePhoto.png'
 
 let employeeDetails = {
   "staffEmail": "adalawanyande@gmail.com",
