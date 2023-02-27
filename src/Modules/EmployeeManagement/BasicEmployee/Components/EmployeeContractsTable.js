@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const EmployeeContractsTable = ({contracts}) => {
   return (
@@ -42,7 +43,8 @@ const EmployeeContractsTable = ({contracts}) => {
                         </td>
                         <td key={contract.id} className="px-6 py-4">
                           {/* Will revisit this to add routing. */}
-                            <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">See more</a>
+                            <Link to="../employee/contract" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">See more</Link>
+                            {/* Add dynamic routing so that it can link to "../employee/contract/:id" */}
                         </td>
                     </tr>
                   );

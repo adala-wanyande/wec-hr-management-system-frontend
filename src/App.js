@@ -29,7 +29,8 @@ function App() {
           <Route path="/employee/dependent" element={<ViewEmployeeDependentDetailsPage />} />
           <Route path="/employee/spouse" element={<ViewEmployeeSpouseDetailsPage />} />
           <Route path="/employee/role" element={<ViewEmployeeRoleAndDepartmentDetailsPage />} />
-          <Route path="/employee/contract" element={<ViewEmployeeContractDetailsDashboard />} />
+          <Route path="/employee/contracts" element={<ViewEmployeeContractDetailsDashboard />} />
+          <Route path="/employee/contract" element={<ViewEmployeeContractDetailsPage />} />
        </Routes>
     </>
   );
