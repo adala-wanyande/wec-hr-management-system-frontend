@@ -13,6 +13,7 @@ import EmployeeDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/Em
 import EmployeeDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeDetailsDashboardPage';
 import EmployeeBioDataDetailsSelectionPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeBioDataDetailsSelectionPage';
 import EmployeeBioDataDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeBioDataDetailsDashboardPage';
+import CreateEmployeeBioDataDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/CreateEmployeeBioDataDetailsPage';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/test/2" element={<EmployeeDetailsDashboardPage />} />
           <Route path="/test/3" element={<EmployeeBioDataDetailsSelectionPage />} />
           <Route path="/test/4" element={<EmployeeBioDataDetailsDashboardPage />} />
+          <Route path="/test/5" element={<CreateEmployeeBioDataDetailsPage />} />
        </Routes>
     </>
   );
