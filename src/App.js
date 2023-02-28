@@ -9,16 +9,11 @@ import ViewEmployeeBioDataPage from './Modules/EmployeeManagement/BasicEmployee/
 import ViewEmployeeContractDetailsPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeContractDetailsPage';
 import EmployeeDetailsDashboard from './Modules/EmployeeManagement/BasicEmployee/Pages/EmployeeDetailsDashboard';
 import LoginPage from './Modules/Authentication/LoginPage';
+import EmployeeDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeDashboardPage';
+import EmployeeDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeDetailsDashboardPage';
 
 
 function App() {
-  
-  // <ViewEmployeeBioDataPage></ViewEmployeeBioDataPage>
-  // <ViewEmployeeContractDetailsPage></ViewEmployeeContractDetailsPage>
-  // <ViewEmployeeContractDetailsDashboard></ViewEmployeeContractDetailsDashboard>
-  // <ViewEmployeeNextOfKinDetailsPage></ViewEmployeeNextOfKinDetailsPage>
-  // <ViewEmployeeRoleAndDepartmentDetailsPage></ViewEmployeeRoleAndDepartmentDetailsPage>
-  // <ViewEmployeeSpouseDetailsPage></ViewEmployeeSpouseDetailsPage>
   return (
     <>
        <Routes>
@@ -31,6 +26,10 @@ function App() {
           <Route path="/employee/role" element={<ViewEmployeeRoleAndDepartmentDetailsPage />} />
           <Route path="/employee/contracts" element={<ViewEmployeeContractDetailsDashboard />} />
           <Route path="/employee/contract" element={<ViewEmployeeContractDetailsPage />} />
+
+          {/* Test routes */}
+          <Route path="/test/1" element={<EmployeeDashboardPage />} />
+          <Route path="/test/2" element={<EmployeeDetailsDashboardPage />} />
        </Routes>
     </>
   );
