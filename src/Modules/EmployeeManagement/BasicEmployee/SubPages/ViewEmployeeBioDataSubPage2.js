@@ -8,7 +8,7 @@ let employeeBioData = {
   "nationalIdNumber": 38550527,
   "kraPinNumber": "A11223423324M",
   "nhifNumber": "445533",
-  "nssfNumber": "Wanyande",
+  "nssfNumber": "122323",
   "phoneNumber": 705869079,
   "staffEmail": "adalawanyande@willfreight.co.ke",
   "personalEmail": "awanyande@gmail.com"

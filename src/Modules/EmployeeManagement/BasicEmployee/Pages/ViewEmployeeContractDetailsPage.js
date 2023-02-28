@@ -1,4 +1,3 @@
-// Important for storing page state for the employee contract details subpages
 import React, {useState} from 'react'
 import ViewEmployeeContractDetailsSubPage1 from '../SubPages/ViewEmployeeContractDetailsSubPage1'
 import ViewEmployeeContractDetailsSubPage2 from '../SubPages/ViewEmployeeContractDetailsSubPage2'

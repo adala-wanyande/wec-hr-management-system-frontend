@@ -1,6 +1,6 @@
 import LoginForm from "./Components/LoginForm";
-import Card from "../Employee/Management/AddEmployee/Components/Card";
-import Title from "../Employee/Management/AddEmployee/Components/Title";
+import Card from "./Components/Card";
+import Title from "./Components/Title";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 

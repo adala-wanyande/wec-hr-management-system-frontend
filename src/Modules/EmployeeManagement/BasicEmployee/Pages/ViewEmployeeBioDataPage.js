@@ -5,8 +5,6 @@ import ViewEmployeeBioDataSubPage2 from '../SubPages/ViewEmployeeBioDataSubPage2
 import ViewEmployeeBioDataSubPage3 from '../SubPages/ViewEmployeeBioDataSubPage3'
 import ViewEmployeeBioDataSubPage4 from '../SubPages/ViewEmployeeBioDataSubPage4'
 
-//Dummy state
-
 const ViewEmployeeBioDataPage = () => {
   let [pageNumber, setPageNumber] = useState(1)
 

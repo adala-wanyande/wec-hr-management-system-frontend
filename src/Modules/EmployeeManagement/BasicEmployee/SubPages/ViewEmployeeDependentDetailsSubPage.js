@@ -3,8 +3,6 @@ import NavigationButton from '../Components/NavigationButton'
 import PageTitle from '../Components/PageTitle'
 import { Link } from 'react-router-dom'
 
-//Dummmy prop
-
 const ViewEmployeeDependentDetailsSubPage = ({dependentDetails, isFirstPage, isLastPage, hasMultiplePages, handleNextPageClick, handlePreviousPageClick}) => {
   let renderNavigation
   if (isFirstPage) {

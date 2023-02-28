@@ -15,7 +15,7 @@ const EmployeeDetailsDashboard = () => {
               <li>
                 <div class="flex items-center">
                 <svg aria-hidden="true" class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
-                    <p class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">View Employee Details Dashboard</p>
+                    <p class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">Employee Details Dashboard</p>
                 </div>
               </li>
             </ol>
@@ -28,7 +28,7 @@ const EmployeeDetailsDashboard = () => {
           <EmployeeDetailsDashboardButton className="shadow-md" buttonText="View Your Dependent Details" link="dependent"></EmployeeDetailsDashboardButton>
           <EmployeeDetailsDashboardButton className="shadow-md" buttonText="View Your Role and Department Details" link="role"></EmployeeDetailsDashboardButton>
           <EmployeeDetailsDashboardButton className="shadow-md" buttonText="View Your Spouse Details" link="spouse"></EmployeeDetailsDashboardButton>
-          <EmployeeDetailsDashboardButton className="shadow-md" buttonText="View Your Contract Details" link="contract"></EmployeeDetailsDashboardButton>              
+          <EmployeeDetailsDashboardButton className="shadow-md" buttonText="View Your Contract Details" link="contracts"></EmployeeDetailsDashboardButton>              
           <EmployeeDetailsDashboardButton className="shadow-md" buttonText="Manage Account Details"></EmployeeDetailsDashboardButton>                
         </div>
       </div>
