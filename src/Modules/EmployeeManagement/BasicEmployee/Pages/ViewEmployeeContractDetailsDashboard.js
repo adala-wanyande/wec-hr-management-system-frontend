@@ -1,33 +1,29 @@
-import React from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import {Link} from 'react-router-dom'
 import EmployeeContractsTable from '../Components/EmployeeContractsTable'
 import PageTitle from '../Components/PageTitle'
 import NavigationButton from '../Components/NavigationButton'
 import NavigationBar from '../Components/NavigationBar'
 
-// Dummy state - Actual state to be received using GET request from DB in useEffect hook
-const contractsObject = [
-  {
-    "contractId": "01011",
-    "jobDescription": "Marketing Manager",
-    "dateOfCommencement": "01/03/2023",
-    "contractDuration": "24"
-  },
-  {
-    "contractId": "00101",
-    "jobDescription": "Marketing Executive",
-    "dateOfCommencement": "01/03/2020",
-    "contractDuration": "24"
-  },
-  {
-    "contractId": "00011",
-    "jobDescription": "Marketing Intern",
-    "dateOfCommencement": "01/03/2019",
-    "contractDuration": "12"
-  }
-];
+const ViewEmployeeContractDetailsDashboard = ({employeeId = 1}) => {
+  const [employeeContractsArray, setEmployeeContractsArray] = useState([])
 
-const ViewEmployeeContractDetailsDashboard = ({contracts = contractsObject}) => {
+  const dataFetchedRef = useRef(false);
+
+  const fetchEmployeeContracts = (employeeId) => {
+      fetch(`http://localhost:8000/api/employee-contract/${employeeId}`)
+      .then(r => r.json())
+      .then((contracts) => {
+        setEmployeeContractsArray(contracts)
+      })
+    }
+
+  useEffect(() => {
+      if (dataFetchedRef.current) return;
+      dataFetchedRef.current = true;
+      fetchEmployeeContracts(employeeId);
+  },[])
+  
   return (
     <>
       <NavigationBar></NavigationBar>
@@ -55,12 +51,11 @@ const ViewEmployeeContractDetailsDashboard = ({contracts = contractsObject}) => 
             </ol>
           </nav>
         </div>
-        
 
         <PageTitle title="View Employee Contract Details Dashboard"></PageTitle>
 
         <div className="flex justify-center mt-8">
-          <EmployeeContractsTable contracts={contracts}></EmployeeContractsTable>
+          <EmployeeContractsTable contracts={employeeContractsArray}></EmployeeContractsTable>
         </div>
       </div>
     </>
