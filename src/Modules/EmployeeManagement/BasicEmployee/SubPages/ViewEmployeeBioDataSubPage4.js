@@ -1,24 +1,18 @@
 import React from 'react'
 import NavigationButton from '../Components/NavigationButton'
 
-//Dummy prop - 3/4 of the full employee bio data details
-let employeeBioData = {
-  "profilePhoto": "photo.jpg",
-  "scanOfEmployeeBioDataForm": "scan.pdf"
-}
-
-const ViewEmployeeBioDataSubPage4 = ({employeeBioDataDetails = employeeBioData, handlePreviousPageClick}) => {
+const ViewEmployeeBioDataSubPage4 = ({employeeBioDataDetails, handlePreviousPageClick}) => {
   return (    
     <>
       <div className="flex justify-center mt-8">
         <ul class="sm:w-[640px] text-sm shadow-md font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
           <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
             <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Profile Photo</li>
-            <li class="px-8 py-2 text-left">{employeeBioDataDetails.profilePhoto}</li>
+            <li class="px-8 py-2 text-left">{employeeBioDataDetails[0]}</li>
           </div>
           <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
             <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Scan of Employee Bio Data Form</li>
-            <li class="px-8 py-2 text-left">{employeeBioDataDetails.scanOfEmployeeBioDataForm}</li>
+            <li class="px-8 py-2 text-left">{employeeBioDataDetails[1]}</li>
           </div>
         </ul>
       </div>

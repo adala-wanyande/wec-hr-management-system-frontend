@@ -24,21 +24,18 @@ const ViewEmployeeContractDetailsPage = () => {
       case 1:
         return (
           <>
-            <NavigationBar></NavigationBar>
             <ViewEmployeeContractDetailsSubPage1 handleNextPageClick={handleNextPageClick}></ViewEmployeeContractDetailsSubPage1>
           </>     
         )
       case 2:
         return (
           <>
-            <NavigationBar></NavigationBar>
             <ViewEmployeeContractDetailsSubPage2 handleNextPageClick={handleNextPageClick} handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeContractDetailsSubPage2>
           </>
         )
       case 3:
         return (
           <>
-            <NavigationBar></NavigationBar>
             <ViewEmployeeContractDetailsSubPage3 handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeContractDetailsSubPage3>
           </>
         )
