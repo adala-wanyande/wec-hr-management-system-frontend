@@ -5,31 +5,7 @@ import NavigationButton from '../Components/NavigationButton'
 import PageTitle from '../Components/PageTitle'
 import { Link } from 'react-router-dom'
 
-let dependentDetails = [
-  {
-    "firstName": "Bernadine",
-    "otherNames": "Banda",
-    "lastName": "Wanyande",
-    "relationship": "Sister",
-    "nationalIdNumber": 38550529
-  },
-  {
-    "firstName": "Rita",
-    "otherNames": "Awino Esther",
-    "lastName": "Wanyande",
-    "relationship": "Sister",
-    "nationalIdNumber": 38550569
-  },
-  {
-    "firstName": "Xolani",
-    "otherNames": "Misha",
-    "lastName": "Mwami",
-    "relationship": "Cousin",
-    "nationalIdNumber": 99900111
-  }
-]
-
-const ViewEmployeeDependentDetailsPage = ({dependents = dependentDetails}) => {
+const ViewEmployeeDependentDetailsPage = ({dependents}) => {
 
   const [pageDetails, setPageDetails] = useState({
     pageCount: "",
@@ -39,12 +15,11 @@ const ViewEmployeeDependentDetailsPage = ({dependents = dependentDetails}) => {
     isLastPage: false
   })
 
-
   useEffect(() => {
     if (dependents.length > 1) {
       setPageDetails({...pageDetails, pageCount: dependents.length + 1, hasMultiplePages: true})
     }
-  }, [])
+  }, [dependents.length])
 
   const handleNextPageClick = () => { 
     if (pageDetails.currentPageNumber === dependents.length - 1) {
@@ -87,7 +62,6 @@ const ViewEmployeeDependentDetailsPage = ({dependents = dependentDetails}) => {
         </ol>
       </nav>
     </div>
-    
 
     <PageTitle title="View Employee Dependent Details"></PageTitle>
       <ViewEmployeeDependentDetailsSubPage hasMultiplePages={pageDetails.hasMultiplePages} dependentDetails={dependents[pageDetails.currentPageNumber - 1]} isFirstPage={pageDetails.isFirstPage} isLastPage={pageDetails.isLastPage} handleNextPageClick={handleNextPageClick} handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeDependentDetailsSubPage>

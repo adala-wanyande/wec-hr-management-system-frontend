@@ -4,7 +4,7 @@ import ViewEmployeeContractDetailsDashboard from './Modules/EmployeeManagement/B
 import ViewEmployeeRoleAndDepartmentDetailsPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeRoleAndDepartmentDetailsPage'
 import ViewEmployeeSpouseDetailsPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeSpouseDetailsPage';
 import ViewEmployeeNextOfKinDetailsPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeNextOfKinDetailsPage';
-import ViewEmployeeDependentDetailsPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeDependentDetailsPage';
+import ViewEmployeeDependentDetails from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeDependentDetails';
 import ViewEmployeeBioDataPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeBioDataPage';
 import ViewEmployeeContractDetailsPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeContractDetailsPage';
 import EmployeeDetailsDashboard from './Modules/EmployeeManagement/BasicEmployee/Pages/EmployeeDetailsDashboard';
@@ -24,7 +24,7 @@ function App() {
           <Route path="/employee/" element={<EmployeeDetailsDashboard />} />
           <Route path="/employee/bio-data" element={<ViewEmployeeBioDataPage />} />
           <Route path="/employee/next-of-kin" element={<ViewEmployeeNextOfKinDetailsPage />} />
-          <Route path="/employee/dependent" element={<ViewEmployeeDependentDetailsPage />} />
+          <Route path="/employee/dependent" element={<ViewEmployeeDependentDetails />} />
           <Route path="/employee/spouse" element={<ViewEmployeeSpouseDetailsPage />} />
           <Route path="/employee/role" element={<ViewEmployeeRoleAndDepartmentDetailsPage />} />
           <Route path="/employee/contracts" element={<ViewEmployeeContractDetailsDashboard />} />
