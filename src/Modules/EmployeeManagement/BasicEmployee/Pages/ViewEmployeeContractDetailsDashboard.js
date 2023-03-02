@@ -4,9 +4,10 @@ import EmployeeContractsTable from '../Components/EmployeeContractsTable'
 import PageTitle from '../Components/PageTitle'
 import NavigationButton from '../Components/NavigationButton'
 import NavigationBar from '../Components/NavigationBar'
+import LoadingSpinner from '../Components/LoadingSpinner'
 
 const ViewEmployeeContractDetailsDashboard = ({employeeId = 1}) => {
-  const [employeeContractsArray, setEmployeeContractsArray] = useState([])
+  const [employeeContractsArray, setEmployeeContractsArray] = useState()
 
   const dataFetchedRef = useRef(false);
 
@@ -23,6 +24,18 @@ const ViewEmployeeContractDetailsDashboard = ({employeeId = 1}) => {
       dataFetchedRef.current = true;
       fetchEmployeeContracts(employeeId);
   },[])
+
+  const renderPage = () => {
+    if (!employeeContractsArray) {
+      return ( <LoadingSpinner></LoadingSpinner> );
+    }
+
+    else if (employeeContractsArray) {
+        return (<div className="flex justify-center mt-8">
+          <EmployeeContractsTable contracts={employeeContractsArray}></EmployeeContractsTable>
+        </div>);
+    }
+  }
   
   return (
     <>
@@ -53,10 +66,8 @@ const ViewEmployeeContractDetailsDashboard = ({employeeId = 1}) => {
         </div>
 
         <PageTitle title="View Employee Contract Details Dashboard"></PageTitle>
-
-        <div className="flex justify-center mt-8">
-          <EmployeeContractsTable contracts={employeeContractsArray}></EmployeeContractsTable>
-        </div>
+        {renderPage()}
+        
       </div>
     </>
     )
