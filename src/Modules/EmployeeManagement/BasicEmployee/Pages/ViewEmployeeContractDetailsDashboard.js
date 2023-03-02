@@ -11,7 +11,7 @@ const ViewEmployeeContractDetailsDashboard = ({employeeId = 1}) => {
   const dataFetchedRef = useRef(false);
 
   const fetchEmployeeContracts = (employeeId) => {
-      fetch(`http://localhost:8000/api/employee-contract/${employeeId}`)
+      fetch(`http://localhost:8000/api/employee-contracts/${employeeId}`)
       .then(r => r.json())
       .then((contracts) => {
         setEmployeeContractsArray(contracts)
