@@ -21,7 +21,6 @@ const ViewEmployeeBioDataPage = ({employeeId = 1}) => {
       fetch(`http://localhost:8000/api/employee-bio-data/${employeeId}`)
       .then((r) => r.json())
       .then((biodata) => {
-        // console.log(biodata)
         setEmployeeBioDataObject(biodata)
       })
     }
@@ -46,8 +45,7 @@ const ViewEmployeeBioDataPage = ({employeeId = 1}) => {
       return (<LoadingSpinner></LoadingSpinner>);
     }
 
-    else if (employeeBioDataObject) {
-          
+    else if (employeeBioDataObject) {    
       //Split the bio data object into 4
       let chunk1 = Object.entries(employeeBioDataObject).slice(0,8).map(entry => entry[1]);
       let chunk2 = Object.entries(employeeBioDataObject).slice(8,15).map(entry => entry[1]);

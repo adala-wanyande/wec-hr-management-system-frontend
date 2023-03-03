@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import ViewEmployeeContractDetailsSubPage1 from '../SubPages/ViewEmployeeContractDetailsSubPage1'
 import ViewEmployeeContractDetailsSubPage2 from '../SubPages/ViewEmployeeContractDetailsSubPage2'
 import ViewEmployeeContractDetailsSubPage3 from '../SubPages/ViewEmployeeContractDetailsSubPage3'
@@ -6,11 +6,24 @@ import NavigationBar from '../Components/NavigationBar'
 import NavigationButton from '../Components/NavigationButton'
 import PageTitle from '../Components/PageTitle'
 import {Link} from 'react-router-dom'
+import LoadingSpinner from '../Components/LoadingSpinner'
 
-
-
-const ViewEmployeeContractDetailsPage = () => {
-  let [pageNumber, setPageNumber] = useState(1)
+const ViewEmployeeContractDetailsPage = ({employeeId = 1}) => {
+  const [employeeContractObject, setEmployeeContractObject] = useState()
+  const dataFetchedRef = useRef(false);
+  const fetchEmployeeContract = (employeeId) => {
+      fetch(`http://localhost:8000/api/contract/${employeeId}`)
+      .then((r) => r.json())
+      .then((contract) => {
+        setEmployeeContractObject(contract)
+      })
+    }
+  useEffect(() => {
+      if (dataFetchedRef.current) return;
+      dataFetchedRef.current = true;
+      fetchEmployeeContract(employeeId);
+  },[])
+  const [pageNumber, setPageNumber] = useState(1)
 
   const handleNextPageClick = () => {
     setPageNumber((pageNumber) => pageNumber + 1);
@@ -19,28 +32,40 @@ const ViewEmployeeContractDetailsPage = () => {
   const handlePreviousPageClick = () => {
     setPageNumber((pageNumber) => pageNumber - 1)
   }
+
   const renderPage = () => {
-    switch (pageNumber) {
-      case 1:
-        return (
-          <>
-            <ViewEmployeeContractDetailsSubPage1 handleNextPageClick={handleNextPageClick}></ViewEmployeeContractDetailsSubPage1>
-          </>     
-        )
-      case 2:
-        return (
-          <>
-            <ViewEmployeeContractDetailsSubPage2 handleNextPageClick={handleNextPageClick} handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeContractDetailsSubPage2>
-          </>
-        )
-      case 3:
-        return (
-          <>
-            <ViewEmployeeContractDetailsSubPage3 handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeContractDetailsSubPage3>
-          </>
-        )
-      default:
-      break;
+    if (!employeeContractObject) {
+      return (<LoadingSpinner></LoadingSpinner>);
+    }
+  
+    else if (employeeContractObject) {
+      // Split the contract object into chunks for each of the pages
+      let chunk1 = Object.entries(employeeContractObject).slice(0,8).map(entry => entry[1]);
+      let chunk2 = Object.entries(employeeContractObject).slice(8,12).map(entry => entry[1]);
+      let chunk3 = Object.entries(employeeContractObject).slice(12,13).map(entry => entry[1]);
+        
+      switch (pageNumber) {
+        case 1:
+          return (
+            <>
+              <ViewEmployeeContractDetailsSubPage1 contractDetails={chunk1} handleNextPageClick={handleNextPageClick}></ViewEmployeeContractDetailsSubPage1>
+            </>     
+          )
+        case 2:
+          return (
+            <>
+              <ViewEmployeeContractDetailsSubPage2 contractDetails={chunk2} handleNextPageClick={handleNextPageClick} handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeContractDetailsSubPage2>
+            </>
+          )
+        case 3:
+          return (
+            <>
+              <ViewEmployeeContractDetailsSubPage3 contractDetails={chunk3} handlePreviousPageClick={handlePreviousPageClick}></ViewEmployeeContractDetailsSubPage3>
+            </>
+          )
+        default:
+        break;
+      }
     }
   }
 
