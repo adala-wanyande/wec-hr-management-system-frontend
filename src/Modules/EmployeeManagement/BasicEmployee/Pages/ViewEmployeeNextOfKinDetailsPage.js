@@ -5,16 +5,6 @@ import NavigationButton from '../Components/NavigationButton'
 import NavigationBar from '../Components/NavigationBar'
 import LoadingSpinner from '../Components/LoadingSpinner'
 
-let nextOfKinDetails = {
-  "firstName": "Wesley",
-  "otherNames": "Odhiambo",
-  "lastName": "Wanyande",
-  "relationship": "Brother",
-  "nationalIdNumber": 38550526,
-  "phoneNumber": 722310184,
-  "personalEmail": "wesleywanyande@gmail.com"
-}
-
 const ViewEmployeeNextOfKinDetailsPage = ({employeeId = 1}) => {
 
   const [nextOfKin, setEmployeeNextOfKin] = useState()
@@ -25,7 +15,6 @@ const ViewEmployeeNextOfKinDetailsPage = ({employeeId = 1}) => {
       fetch(`http://localhost:8000/api/employee-next-of-kin/${employeeId}`)
       .then((r) => r.json())
       .then((nextOfKin) => {
-        // console.log(biodata)
         setEmployeeNextOfKin(nextOfKin)
       })
     }

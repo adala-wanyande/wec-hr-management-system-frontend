@@ -13,7 +13,6 @@ const ViewEmployeeDependentDetails = ({employeeId = 5}) => {
     useEffect(() => {
         fetchEmployeeDependents(employeeId);
     },[])
-  console.log(employeeDependentsArray)    
 
     return <ViewEmployeeDependentDetailsPage dependents={employeeDependentsArray}></ViewEmployeeDependentDetailsPage>
 }

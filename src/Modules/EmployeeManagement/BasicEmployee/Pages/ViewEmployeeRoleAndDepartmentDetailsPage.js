@@ -1,20 +1,71 @@
-import React from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import PageTitle from '../Components/PageTitle'
 import NavigationButton from '../Components/NavigationButton'
 import NavigationBar from '../Components/NavigationBar'
+import LoadingSpinner from '../Components/LoadingSpinner'
 
-let roleAndDepartmentDetails = {
-  "jobTitle": "Marketing Manager",
-  "department": "Marketing",
-  "reportsTo": "Marketing Director",
-  "jobOverview": "Taking strategic and creative leadership from the Head of Marketing and Communications, the Marketing Manager will assume delegated responsibility for the delivery of marketing projects, assignments and events.",
-  "responsibilities": "Key tasks will include: Deputizing for the Head of Marketing and Communications, where appropriate.\nCo-ordinate the organization of college marketing events such as college Open Days, celebration events, business breakfasts etc.\nPrepare and implement marketing plans and action plans for the 14-19, adult and employer markets.",
-  "qualifications": "High school diploma"
-}
+const ViewEmployeeRoleAndDepartmentDetailsPage = ({employeeId = 1}) => {
 
-const ViewEmployeeRoleAndDepartmentDetailsPage = ({roleAndDepartment = roleAndDepartmentDetails}) => {
-  return (
+  const [roleAndDepartment, setEmployeeRoleAndDepartmentObject] = useState()
+
+  const dataFetchedRef = useRef(false);
+
+  const fetchEmployeeRoleAndDepartment = (employeeId) => {
+      fetch(`http://localhost:8000/api/employee-role-and-department/${employeeId}`)
+      .then((r) => r.json())
+      .then((roleAndDepartment) => {
+        console.log(roleAndDepartment)
+        setEmployeeRoleAndDepartmentObject(roleAndDepartment)
+      })
+    }
+
+  useEffect(() => {
+      if (dataFetchedRef.current) return;
+      dataFetchedRef.current = true;
+      fetchEmployeeRoleAndDepartment(employeeId);
+  },[])
+
+  const renderPage = () => {
+    if (!roleAndDepartment) {
+      return (<LoadingSpinner></LoadingSpinner>);
+    }
+
+    else if (roleAndDepartment) {
+      return (
+        <>
+            <div className="flex justify-center mt-8">
+              <ul class="sm:w-[640px] text-sm font-medium shadow-md text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
+                  <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Job Title</li>
+                  <li class="px-8 py-2 text-left">{roleAndDepartment.jobTitle}</li>
+                </div>
+                <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
+                  <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Department</li>
+                  <li class="px-8 py-2 text-left">{roleAndDepartment.department}</li>
+                </div>
+                <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
+                  <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Reports To</li>
+                  <li class="px-8 py-2 text-left">{roleAndDepartment.reportsTo}</li>
+                </div>
+                <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
+                  <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Job Overview</li>
+                  <li class="px-8 py-2 text-left">{roleAndDepartment.jobOverview}</li>
+                </div>
+                <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
+                  <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Responsibilities and Duties</li>
+                  <li class="px-8 py-2 text-left">{roleAndDepartment.responsibilities}</li>
+                </div>
+                <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
+                  <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Qualifications</li>
+                  <li class="px-8 py-2 text-left">{roleAndDepartment.qualifications}</li>
+                </div>
+              </ul>
+            </div>
+        </>
+        )  
+      }}
+  return(
     <>
       <NavigationBar></NavigationBar>
       <div className="mx-4 p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -45,37 +96,11 @@ const ViewEmployeeRoleAndDepartmentDetailsPage = ({roleAndDepartment = roleAndDe
 
         <PageTitle title="View Employee Role and Department Details"></PageTitle>
 
-        <div className="flex justify-center mt-8">
-          <ul class="sm:w-[640px] text-sm font-medium shadow-md text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-            <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-              <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Job Title</li>
-              <li class="px-8 py-2 text-left">{roleAndDepartment.jobTitle}</li>
-            </div>
-            <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-              <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Department</li>
-              <li class="px-8 py-2 text-left">{roleAndDepartment.department}</li>
-            </div>
-            <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-              <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Reports To</li>
-              <li class="px-8 py-2 text-left">{roleAndDepartment.reportsTo}</li>
-            </div>
-            <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-              <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Job Overview</li>
-              <li class="px-8 py-2 text-left">{roleAndDepartment.jobOverview}</li>
-            </div>
-            <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-              <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Responsibilities and Duties</li>
-              <li class="px-8 py-2 text-left">{roleAndDepartment.responsibilities}</li>
-            </div>
-            <div className='grid grid-cols-2 divide-x w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-              <li class="px-8 py-2 text-left bg-gray-100 dark:bg-gray-600 dark:text-gray-400">Qualifications</li>
-              <li class="px-8 py-2 text-left">{roleAndDepartment.qualifications}</li>
-            </div>
-          </ul>
-        </div>
+        {renderPage()}     
       </div>
     </>
-    )  
+  );
+
 }
 
 export default ViewEmployeeRoleAndDepartmentDetailsPage
