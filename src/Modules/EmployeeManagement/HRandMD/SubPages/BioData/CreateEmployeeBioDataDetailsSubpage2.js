@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import NavigationButton from '../../BasicEmployee/Components/NavigationButton'
-import PageTitle from '../../BasicEmployee/Components/PageTitle'
+import NavigationButton from '../../../BasicEmployee/Components/NavigationButton'
+import PageTitle from '../../../BasicEmployee/Components/PageTitle'
 
-const CreateEmployeeBioDataDetailsSubpage2 = () => {
+const CreateEmployeeBioDataDetailsSubpage2 = ({handleNextPageClick, handlePreviousPageClick}) => {
   return (
         <div className="flex justify-center mt-8">
             <form className="sm:w-[640px] text-sm font-medium shadow-md text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
@@ -37,10 +37,10 @@ const CreateEmployeeBioDataDetailsSubpage2 = () => {
                 </div>
                 <div className='grid grid-cols-6 gap-1 pt-4 px-8 m-6'>
                     <div className="col-start-2 col-span-1">
-                        <NavigationButton buttonText="Previous Page"></NavigationButton>
+                        <NavigationButton buttonText="Previous Page" handleClick={handlePreviousPageClick}></NavigationButton>
                     </div>
                     <div className="col-start-5 col-span-1">
-                        <NavigationButton buttonText="Next Page"></NavigationButton>
+                        <NavigationButton buttonText="Next Page" handleClick={handleNextPageClick}></NavigationButton>
                     </div>
                 </div>
             </form>

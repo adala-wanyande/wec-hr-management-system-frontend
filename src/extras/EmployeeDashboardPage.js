@@ -1,7 +1,7 @@
 import React from 'react'
-import NavigationBar from '../../BasicEmployee/Components/NavigationBar'
-import EmployeeDetailsDashboardButton from '../../BasicEmployee/Components/EmployeeDetailsDashboardButton'
-import PageTitle from '../../BasicEmployee/Components/PageTitle'
+import NavigationBar from '../src/Modules/EmployeeManagement/BasicEmployee/Components/NavigationBar'
+import EmployeeDetailsDashboardButton from '../src/Modules/EmployeeManagement/BasicEmployee/Components/EmployeeDetailsDashboardButton'
+import PageTitle from '../src/Modules/EmployeeManagement/BasicEmployee/Components/PageTitle'
 
 const EmployeeDashboardPage = () => {
   return (

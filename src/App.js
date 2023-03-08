@@ -9,33 +9,95 @@ import ViewEmployeeBioDataPage from './Modules/EmployeeManagement/BasicEmployee/
 import ViewEmployeeContractDetailsPage from './Modules/EmployeeManagement/BasicEmployee/Pages/ViewEmployeeContractDetailsPage';
 import EmployeeDetailsDashboard from './Modules/EmployeeManagement/BasicEmployee/Pages/EmployeeDetailsDashboard';
 import LoginPage from './Modules/Authentication/LoginPage';
-import EmployeeDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeDashboardPage';
 import EmployeeDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeDetailsDashboardPage';
-import EmployeeBioDataDetailsSelectionPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeBioDataDetailsSelectionPage';
-import EmployeeBioDataDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/EmployeeBioDataDetailsDashboardPage';
-import CreateEmployeeBioDataDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/CreateEmployeeBioDataDetailsPage';
-
+import EmployeeBioDataDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/BioData/EmployeeBioDataDetailsDashboardPage';
+import EmployeeNextOfKinDetailsDashboard from './Modules/EmployeeManagement/HRandMD/Pages/NextOfKin/EmployeeNextOfKinDetailsDashboard';
+import EmployeeRoleDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/Role/EmployeeRoleDetailsDashboardPage';
+import EmployeeDepartmentDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/Department/EmployeeDepartmentDetailsDashboardPage';
+import EmployeeSpouseDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/Spouse/EmployeeSpouseDetailsDashboardPage';
+import EmployeeDependentDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/Dependent/EmployeeDependentDetailsDashboardPage';
+import EmployeeContractDetailsDashboardPage from './Modules/EmployeeManagement/HRandMD/Pages/Contract/EmployeeContractDetailsDashboardPage';
+import CreateEmployeeBioDataDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/BioData/CreateEmployeeBioDataDetailsPage';
+import CreateEmployeeNextOfKinDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/NextOfKin/CreateEmployeeNextOfKinDetailsPage';
+import CreateEmployeeDependentDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Dependent/CreateEmployeeDependentDetailsPage';
+import CreateEmployeeSpouseDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Spouse/CreateEmployeeSpouseDetailsPage';
+import CreateEmployeeRoleDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Role/CreateEmployeeRoleDetailsPage';
+import CreateEmployeeDepartmentDetailsPage from './/Modules/EmployeeManagement/HRandMD/Pages/Role/CreateEmployeeRoleDetailsPage'
+import CreateEmployeeContractDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Department/CreateEmployeeDepartmentDetailsPage';
+import ViewEmployeeBioDataDetailsPageHr from './Modules/EmployeeManagement/HRandMD/Pages/BioData/ViewEmployeeBioDataDetailsPage';
+import ViewEmployeeNextOfKinDetailsPageHr from './Modules/EmployeeManagement/HRandMD/Pages/NextOfKin/ViewEmployeeNextOfKinDetailsPage';
+import ViewEmployeeDependentDetailsPageHr from './Modules/EmployeeManagement/HRandMD/Pages/Dependent/ViewEmployeeDependentDetailsPage';
+import ViewEmployeeSpouseDetailsPageHr from './Modules/EmployeeManagement/HRandMD/Pages/Spouse/ViewEmployeeSpouseDetailsPage';
+import ViewEmployeeRoleDetailsPageHr from './Modules/EmployeeManagement/HRandMD/Pages/Role/ViewEmployeeRoleDetailsPage';
+import ViewEmployeeDepartmentDetailsPageHr from './/Modules/EmployeeManagement/HRandMD/Pages/Role/ViewEmployeeRoleDetailsPage'
+import ViewEmployeeContractDetailsPageHr from './Modules/EmployeeManagement/HRandMD/Pages/Department/ViewEmployeeDepartmentDetailsPage';
+import EditEmployeeBioDataDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/BioData/EditEmployeeBioDataDetailsPage';
+import EditEmployeeNextOfKinDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/NextOfKin/EditEmployeeNextOfKinDetailsPage';
+import EditEmployeeDependentDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Dependent/EditEmployeeDependentDetailsPage';
+import EditEmployeeSpouseDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Spouse/EditEmployeeSpouseDetailsPage';
+import EditEmployeeRoleDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Role/EditEmployeeRoleDetailsPage';
+import EditEmployeeDepartmentDetailsPage from './/Modules/EmployeeManagement/HRandMD/Pages/Role/EditEmployeeRoleDetailsPage'
+import EditEmployeeContractDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Department/EditEmployeeDepartmentDetailsPage';
+import DeleteEmployeeBioDataDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/BioData/DeleteEmployeeBioDataDetailsPage';
+import DeleteEmployeeNextOfKinDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/NextOfKin/DeleteEmployeeNextOfKinDetailsPage';
+import DeleteEmployeeDependentDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Dependent/DeleteEmployeeDependentDetailsPage';
+import DeleteEmployeeSpouseDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Spouse/DeleteEmployeeSpouseDetailsPage';
+import DeleteEmployeeRoleDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Role/DeleteEmployeeRoleDetailsPage';
+import DeleteEmployeeDepartmentDetailsPage from './/Modules/EmployeeManagement/HRandMD/Pages/Role/DeleteEmployeeRoleDetailsPage'
+import DeleteEmployeeContractDetailsPage from './Modules/EmployeeManagement/HRandMD/Pages/Department/DeleteEmployeeDepartmentDetailsPage';
 
 function App() {
   return (
     <>
        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/employee/" element={<EmployeeDetailsDashboard />} />
-          <Route path="/employee/bio-data" element={<ViewEmployeeBioDataPage />} />
-          <Route path="/employee/next-of-kin" element={<ViewEmployeeNextOfKinDetailsPage />} />
-          <Route path="/employee/dependent" element={<ViewEmployeeDependentDetails />} />
-          <Route path="/employee/spouse" element={<ViewEmployeeSpouseDetailsPage />} />
-          <Route path="/employee/role" element={<ViewEmployeeRoleAndDepartmentDetailsPage />} />
-          <Route path="/employee/contracts" element={<ViewEmployeeContractDetailsDashboard />} />
-          <Route path="/employee/contract" element={<ViewEmployeeContractDetailsPage />} />
-
-          {/* Test routes */}
-          <Route path="/test/1" element={<EmployeeDashboardPage />} />
-          <Route path="/test/2" element={<EmployeeDetailsDashboardPage />} />
-          <Route path="/test/3" element={<EmployeeBioDataDetailsSelectionPage />} />
-          <Route path="/test/4" element={<EmployeeBioDataDetailsDashboardPage />} />
-          <Route path="/test/5" element={<CreateEmployeeBioDataDetailsPage />} />
+          {/* Authentication Routes */}
+          <Route path="/login" element={<LoginPage />} />
+          {/* Basic Employee Scope  */}
+          <Route path="employee/basic/" element={<EmployeeDetailsDashboard />}/>
+          <Route path="employee/basic/bio-data" element={<ViewEmployeeBioDataPage />} />
+          <Route path="employee/basic/next-of-kin" element={<ViewEmployeeNextOfKinDetailsPage />} />
+          <Route path="employee/basic/dependent" ele ment={<ViewEmployeeDependentDetails />} />
+          <Route path="employee/basic/spouse" element={<ViewEmployeeSpouseDetailsPage />} />
+          <Route path="employee/basic/role" element={<ViewEmployeeRoleAndDepartmentDetailsPage />} />
+          <Route path="employee/basic/contracts" element={<ViewEmployeeContractDetailsDashboard />} />
+          <Route path="employee/basic/contract" element={<ViewEmployeeContractDetailsPage />} />
+          {/* HR and MD Scope */}
+          <Route path="/employee/hr/" element={<EmployeeDetailsDashboardPage />} />
+          <Route path="/employee/hr/bio-data/" element={<EmployeeBioDataDetailsDashboardPage />} />
+          <Route path="/employee/hr/bio-data/add" element={<CreateEmployeeBioDataDetailsPage />} />
+          <Route path="/employee/hr/bio-data/view" element={<ViewEmployeeBioDataDetailsPageHr />} />
+          <Route path="/employee/hr/bio-data/edit" element={<EditEmployeeBioDataDetailsPage />} />
+          <Route path="/employee/hr/bio-data/delete" element={<DeleteEmployeeBioDataDetailsPage />} />
+          <Route path="/employee/hr/next-of-kin/" element={ <EmployeeNextOfKinDetailsDashboard />} />
+          <Route path="/employee/hr/next-of-kin/add" element={<CreateEmployeeNextOfKinDetailsPage />} />
+          <Route path="/employee/hr/next-of-kin/view" element={<ViewEmployeeNextOfKinDetailsPageHr />} />
+          <Route path="/employee/hr/next-of-kin/edit" element={<EditEmployeeNextOfKinDetailsPage />} />
+          <Route path="/employee/hr/next-of-kin/delete" element={<DeleteEmployeeNextOfKinDetailsPage />} />
+          <Route path="/employee/hr/dependent" element={<EmployeeDependentDetailsDashboardPage />} />
+          <Route path="/employee/hr/dependent/add" element={<CreateEmployeeDependentDetailsPage />} />
+          <Route path="/employee/hr/dependent/view" element={<ViewEmployeeDependentDetailsPageHr />} />
+          <Route path="/employee/hr/dependent/edit" element={<EditEmployeeDependentDetailsPage />} />
+          <Route path="/employee/hr/dependent/delete" element={<DeleteEmployeeDependentDetailsPage />} />
+          <Route path="/employee/hr/spouse/" element={<EmployeeSpouseDetailsDashboardPage />} />
+          <Route path="/employee/hr/spouse/add" element={<CreateEmployeeSpouseDetailsPage />} />
+          <Route path="/employee/hr/spouse/view" element={<ViewEmployeeSpouseDetailsPageHr />} />
+          <Route path="/employee/hr/spouse/edit" element={<EditEmployeeSpouseDetailsPage />} />
+          <Route path="/employee/hr/spouse/delete" element={<DeleteEmployeeSpouseDetailsPage />} />
+          <Route path="/employee/hr/role/" element={<EmployeeRoleDetailsDashboardPage />} />
+          <Route path="/employee/hr/role/add" element={<CreateEmployeeRoleDetailsPage />} />
+          <Route path="/employee/hr/role/view" element={<ViewEmployeeRoleDetailsPageHr />} />
+          <Route path="/employee/hr/role/edit" element={<EditEmployeeRoleDetailsPage />} />
+          <Route path="/employee/hr/role/delete" element={<DeleteEmployeeRoleDetailsPage />} />
+          <Route path="/employee/hr/contract/" element={<EmployeeContractDetailsDashboardPage />} />
+          <Route path="/employee/hr/contract/add" element={<CreateEmployeeContractDetailsPage />} />
+          <Route path="/employee/hr/contract/view" element={<ViewEmployeeContractDetailsPageHr />} />
+          <Route path="/employee/hr/contract/edit" element={<EditEmployeeContractDetailsPage />} />
+          <Route path="/employee/hr/contract/delete" element={<DeleteEmployeeContractDetailsPage/>} />
+          <Route path="/employee/hr/department/" element={<EmployeeDepartmentDetailsDashboardPage />} />
+          <Route path="/employee/hr/department/add" element={<CreateEmployeeDepartmentDetailsPage />} />
+          <Route path="/employee/hr/department/view" element={<ViewEmployeeDepartmentDetailsPageHr />} />
+          <Route path="/employee/hr/department/edit" element={<EditEmployeeDepartmentDetailsPage />} />
+          <Route path="/employee/hr/department/delete" element={<DeleteEmployeeDepartmentDetailsPage/>} />
        </Routes>
     </>
   );

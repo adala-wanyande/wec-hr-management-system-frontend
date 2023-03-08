@@ -10,13 +10,9 @@ import PageTitle from '../Components/PageTitle'
 import LoadingSpinner from '../Components/LoadingSpinner'
 
 const ViewEmployeeBioDataPage = ({employeeId = 1}) => {
-
   const [employeeBioDataObject, setEmployeeBioDataObject] = useState()
-  let [pageNumber, setPageNumber] = useState(1)
-
-
+  const [pageNumber, setPageNumber] = useState(1)
   const dataFetchedRef = useRef(false);
-
   const fetchEmployeeBioData = (employeeId) => {
       fetch(`http://localhost:8000/api/employee-bio-data/${employeeId}`)
       .then((r) => r.json())
@@ -24,34 +20,27 @@ const ViewEmployeeBioDataPage = ({employeeId = 1}) => {
         setEmployeeBioDataObject(biodata)
       })
     }
-
   useEffect(() => {
       if (dataFetchedRef.current) return;
       dataFetchedRef.current = true;
       fetchEmployeeBioData(employeeId);
   },[])
-
-
   const handleNextPageClick = () => {
       setPageNumber((pageNumber) => {return pageNumber + 1})
   }
-
   const handlePreviousPageClick = () => {
     setPageNumber((pageNumber) => {return pageNumber - 1})
   } 
-  
   const renderPage = () => {
     if (!employeeBioDataObject) {
       return (<LoadingSpinner></LoadingSpinner>);
     }
-
     else if (employeeBioDataObject) {    
       //Split the bio data object into 4
       let chunk1 = Object.entries(employeeBioDataObject).slice(0,8).map(entry => entry[1]);
       let chunk2 = Object.entries(employeeBioDataObject).slice(8,15).map(entry => entry[1]);
       let chunk3 = Object.entries(employeeBioDataObject).slice(15,22).map(entry => entry[1]);
       let chunk4 = Object.entries(employeeBioDataObject).slice(22,24).map(entry => entry[1]);
-
       switch (pageNumber) {
         case 1:
           return (
@@ -82,7 +71,6 @@ const ViewEmployeeBioDataPage = ({employeeId = 1}) => {
       }
     }
   }
-
   return(
     <>
       <NavigationBar></NavigationBar>
