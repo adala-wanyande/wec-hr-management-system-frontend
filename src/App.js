@@ -56,7 +56,7 @@ function App() {
           <Route path="employee/basic/" element={<EmployeeDetailsDashboard />}/>
           <Route path="employee/basic/bio-data" element={<ViewEmployeeBioDataPage />} />
           <Route path="employee/basic/next-of-kin" element={<ViewEmployeeNextOfKinDetailsPage />} />
-          <Route path="employee/basic/dependent" ele ment={<ViewEmployeeDependentDetails />} />
+          <Route path="employee/basic/dependent" element={<ViewEmployeeDependentDetails />} />
           <Route path="employee/basic/spouse" element={<ViewEmployeeSpouseDetailsPage />} />
           <Route path="employee/basic/role" element={<ViewEmployeeRoleAndDepartmentDetailsPage />} />
           <Route path="employee/basic/contracts" element={<ViewEmployeeContractDetailsDashboard />} />

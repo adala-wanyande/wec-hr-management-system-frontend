@@ -43,7 +43,7 @@ const EmployeeContractsTable = ({contracts}) => {
                         </td>
                         <td key={contract.id} className="px-6 py-4">
                           {/* Will revisit this to add routing. */}
-                            <Link to="../employee/contract" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">See more</Link>
+                            <Link to="../employee/basic/contract" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">See more</Link>
                             {/* Add dynamic routing so that it can link to "../employee/contract/:id" */}
                         </td>
                     </tr>
