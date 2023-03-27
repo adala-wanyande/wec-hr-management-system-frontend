@@ -1,5 +1,8 @@
 # HR Management System - Willfreight Express Cargo (WEC)
 
+## Preview of the project
+![preview](https://user-images.githubusercontent.com/118197541/228067460-667a8efa-bcc6-4be8-8e0c-6072db05b87a.gif)
+
 ## Live Link
 The project is still in development but as soon as it goes live a link to the deployed site will be provided.
 
